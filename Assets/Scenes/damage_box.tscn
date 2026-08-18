@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://be2s2lngt8oni"]
+
+[ext_resource type="Script" uid="uid://cw2stpx4x8euo" path="res://Assets/Scenes/DamageBox.cs" id="1_jk00i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agptc"]
+size = Vector2(14, 14)
+
+[node name="DamageBox" type="Area2D"]
+script = ExtResource("1_jk00i")
+col_shape_path = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_agptc")

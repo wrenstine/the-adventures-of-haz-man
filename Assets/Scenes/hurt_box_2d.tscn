@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfffaskrdmwol"]
+
+[ext_resource type="Script" uid="uid://q61lis5hyts0" path="res://Assets/Scenes/HurtBox2d.cs" id="1_y11xj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r06y"]
+
+[node name="HurtBox2d" type="Area2D"]
+script = ExtResource("1_y11xj")
+col_shape_path = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2r06y")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dic5najxbukad"]
+
+[ext_resource type="Script" uid="uid://wr1q1jwh0gte" path="res://Assets/Scenes/Fist.cs" id="1_0hddn"]
+[ext_resource type="Texture2D" uid="uid://dqgn4xflgpxx8" path="res://Assets/Animations/Haz-Man-Punch-Down.png" id="1_dh22x"]
+[ext_resource type="PackedScene" uid="uid://be2s2lngt8oni" path="res://Assets/Scenes/damage_box.tscn" id="3_7ao6q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hddn"]
+atlas = ExtResource("1_dh22x")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ao6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hddn")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}]
+
+[node name="Fist" type="Node2D"]
+script = ExtResource("1_0hddn")
+life_path = NodePath("Timer")
+hitbox_path = NodePath("")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7ao6q")
+animation = &"Down"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="DamageBox" parent="." instance=ExtResource("3_7ao6q")]
+collision_layer = 2
+collision_mask = 2
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

@@ -1,0 +1,389 @@
+[gd_scene load_steps=31 format=3 uid="uid://bntx3attlclxe"]
+
+[ext_resource type="Script" uid="uid://hxpgjd4rl5dv" path="res://Assets/Scenes/HazManPlayer.cs" id="1_fmwq5"]
+[ext_resource type="Texture2D" uid="uid://b5oxcfxvvyj0q" path="res://Assets/Animations/haz-man-down-sprite.png" id="2_fmwq5"]
+[ext_resource type="PackedScene" uid="uid://dic5najxbukad" path="res://Assets/Scenes/Fist.tscn" id="2_win0n"]
+[ext_resource type="Texture2D" uid="uid://dqgn4xflgpxx8" path="res://Assets/Animations/Haz-Man-Punch-Down.png" id="3_fmwq5"]
+[ext_resource type="PackedScene" uid="uid://bfffaskrdmwol" path="res://Assets/Scenes/hurt_box_2d.tscn" id="5_vdq2d"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fmwq5"]
+animation = &"Walk Down"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_win0n"]
+"states/Walk Down/node" = SubResource("AnimationNodeAnimation_fmwq5")
+"states/Walk Down/position" = Vector2(525, 100)
+graph_offset = Vector2(-368, 11)
+
+[sub_resource type="Animation" id="Animation_fmwq5"]
+resource_name = "Idle Down"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle Down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qbd0m"]
+resource_name = "Punch Down Finish"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Punch Down Finish"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_2twpd"]
+resource_name = "Punch Down Init"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Punch Down Init"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_cyv6q"]
+resource_name = "Punch Down Windup"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Punch Down Windup"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_win0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle Down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vdq2d"]
+resource_name = "Walk Down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk Down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.40466824, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdq2d"]
+_data = {
+&"Idle Down": SubResource("Animation_fmwq5"),
+&"Punch Down Finish": SubResource("Animation_qbd0m"),
+&"Punch Down Init": SubResource("Animation_2twpd"),
+&"Punch Down Windup": SubResource("Animation_cyv6q"),
+&"RESET": SubResource("Animation_win0n"),
+&"Walk Down": SubResource("Animation_vdq2d")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guosf"]
+atlas = ExtResource("2_fmwq5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmwq5"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s4i0"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_win0n"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdq2d"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2twpd"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyv6q"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbd0m"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1eus"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exb6g"]
+atlas = ExtResource("3_fmwq5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixvxw"]
+atlas = ExtResource("2_fmwq5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb3m7"]
+atlas = ExtResource("2_fmwq5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrpv4"]
+atlas = ExtResource("2_fmwq5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvbao"]
+atlas = ExtResource("2_fmwq5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jkvs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guosf")
+}],
+"loop": true,
+"name": &"Idle Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmwq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s4i0")
+}],
+"loop": true,
+"name": &"Punch Down Finish",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_win0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdq2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2twpd")
+}],
+"loop": true,
+"name": &"Punch Down Init",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyv6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbd0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1eus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exb6g")
+}],
+"loop": true,
+"name": &"Punch Down Windup",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixvxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb3m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrpv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvbao")
+}],
+"loop": true,
+"name": &"Walk Down",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixvxw"]
+size = Vector2(8, 8)
+
+[node name="HazManPlayer" type="CharacterBody2D"]
+script = ExtResource("1_fmwq5")
+up_path = NodePath("up")
+down_path = NodePath("down")
+left_path = NodePath("left")
+right_path = NodePath("right")
+anim_pos_path = NodePath("AnimationPosition")
+punch_path = NodePath("Fist")
+timer_path = NodePath("Fist/Timer")
+
+[node name="Fist" parent="." instance=ExtResource("2_win0n")]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../AnimationPosition/AnimatedSprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_win0n")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPosition/AnimatedSprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_vdq2d")
+}
+
+[node name="up" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, -8)
+hit_from_inside = true
+
+[node name="down" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="left" type="RayCast2D" parent="."]
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
+hit_from_inside = true
+
+[node name="right" type="RayCast2D" parent="."]
+position = Vector2(8, 0)
+target_position = Vector2(8, 0)
+hit_from_inside = true
+
+[node name="AnimationPosition" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="AnimationPosition"]
+zoom = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPosition"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_5jkvs")
+animation = &"Idle Down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ixvxw")
+
+[node name="HurtBox2d" parent="." instance=ExtResource("5_vdq2d")]
+position = Vector2(0, 3)
+col_x = 8.0
+col_y = 8.0
+col_shape_path = NodePath("CollisionShape2D")
+
+[editable path="Fist"]
+[editable path="HurtBox2d"]

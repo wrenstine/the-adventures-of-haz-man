@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5j8aw5j6atcu"
+path="res://.godot/imported/Area Theme - Data Analytics.mp3-91912a304ea015a793aa0f2a5fdc72b5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Area Theme - Data Analytics.mp3"
+dest_files=["res://.godot/imported/Area Theme - Data Analytics.mp3-91912a304ea015a793aa0f2a5fdc72b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

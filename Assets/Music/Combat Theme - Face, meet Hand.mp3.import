@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8cbevumavgq4"
+path="res://.godot/imported/Combat Theme - Face, meet Hand.mp3-f0f7345f46ace91033949f56119a2a21.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Combat Theme - Face, meet Hand.mp3"
+dest_files=["res://.godot/imported/Combat Theme - Face, meet Hand.mp3-f0f7345f46ace91033949f56119a2a21.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
