@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Kill visual studio files
+/.vs
+
+# temp files
+*.tmp
