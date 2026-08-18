@@ -14,6 +14,10 @@ config/name="The Adventures of Haz-Man"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://Assets/Scripts/GameManager.cs"
+
 [dotnet]
 
 project/assembly_name="The Adventures of Haz-Man"
