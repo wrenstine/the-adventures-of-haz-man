@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://chse3muljs8cc"]
+
+[ext_resource type="PackedScene" uid="uid://bfffaskrdmwol" path="res://Assets/Scenes/hurt_box_2d.tscn" id="1_2xwlu"]
+[ext_resource type="Texture2D" uid="uid://ja5rxcwrhcs7" path="res://Assets/Animations/SecurityBotNoAnim.png" id="2_htjtb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uar1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjdfp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_htjtb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicEnemyCharacter" type="CharacterBody2D"]
+
+[node name="HurtBox2d" parent="." instance=ExtResource("1_2xwlu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6uar1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qjdfp")

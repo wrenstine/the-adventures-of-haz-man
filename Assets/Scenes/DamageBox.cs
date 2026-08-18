@@ -57,8 +57,8 @@ public partial class DamageBox : Area2D
 
     private void OnAreaEntered(Area2D area)
     {
-
-        if (area.IsClass("HurtBox2d"))
+        //GD.Print("type hit:" + area.GetType().Name);
+        if (area.GetType() == typeof(HurtBox2d))
         {
             HurtBox2d box = area as HurtBox2d;
 

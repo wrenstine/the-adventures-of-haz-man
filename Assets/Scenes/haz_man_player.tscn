@@ -367,13 +367,13 @@ hit_from_inside = true
 
 [node name="AnimationPosition" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="AnimationPosition"]
-zoom = Vector2(3, 3)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPosition"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5jkvs")
 animation = &"Idle Down"
+
+[node name="Camera2D" type="Camera2D" parent="AnimationPosition"]
+zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -383,7 +383,8 @@ shape = SubResource("RectangleShape2D_ixvxw")
 position = Vector2(0, 3)
 col_x = 8.0
 col_y = 8.0
-col_shape_path = NodePath("CollisionShape2D")
+
+[connection signal="HitRecieved" from="HurtBox2d" to="." method="_on_hurt_box_2d_hit_recieved"]
 
 [editable path="Fist"]
 [editable path="HurtBox2d"]

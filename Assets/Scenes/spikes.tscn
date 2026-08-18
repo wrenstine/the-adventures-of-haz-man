@@ -17,6 +17,9 @@ animations = [{
 [node name="Spikes" type="Node2D"]
 
 [node name="Damage Box" parent="." instance=ExtResource("1_nrdsm")]
+damage = 1
+col_x = 14.0
+col_y = 14.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ds4fp")

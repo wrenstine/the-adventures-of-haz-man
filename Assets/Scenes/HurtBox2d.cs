@@ -44,6 +44,8 @@ public partial class HurtBox2d : Area2D
         if (!is_invincible)
         {
             EmitSignalHitRecieved(hitbox);
+            //GD.Print("Took Hit");
+            is_invincible = true;
         }
     }
     
