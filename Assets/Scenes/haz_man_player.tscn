@@ -386,9 +386,11 @@ col_y = 8.0
 
 [node name="StallTimer" type="Timer" parent="."]
 wait_time = 0.284
+one_shot = true
 
 [node name="InvTimer" type="Timer" parent="."]
 wait_time = 0.8
+one_shot = true
 
 [connection signal="InvTimerTimeup" from="." to="HurtBox2d" method="_on_haz_man_player_inv_timer_timeup"]
 [connection signal="HitRecieved" from="HurtBox2d" to="." method="_on_hurt_box_2d_hit_recieved"]

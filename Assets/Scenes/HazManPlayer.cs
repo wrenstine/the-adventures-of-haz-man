@@ -78,9 +78,12 @@ public partial class HazManPlayer : CharacterBody2D
 			Timer timer = GetNode<Timer>(timer_path);
 			timer.Timeout += OnTimerTimeout;
 		}
-
-		//sprite_node_pos_tween = GetTree().CreateTween();
-	}
+		state = haz_state.STALL;
+        Timer s_timer = (Timer)FindChild("StallTimer");
+		s_timer.Start();
+		GD.Print(state);
+        //sprite_node_pos_tween = GetTree().CreateTween();
+    }
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -254,7 +257,7 @@ public partial class HazManPlayer : CharacterBody2D
 
     private void _on_stall_timer_timeout()
 	{
-		state = haz_state.IDLE;
+		GD.Print("unstalled");
 	}
 
 	private void EndTimerEarly(Timer timer)
