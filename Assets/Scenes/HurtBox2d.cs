@@ -48,5 +48,10 @@ public partial class HurtBox2d : Area2D
             is_invincible = true;
         }
     }
+
+    private void _on_haz_man_player_inv_timer_timeup()
+    {
+        is_invincible = false;
+    }
     
 }

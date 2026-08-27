@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp52h1p5s1d0v"]
+
+[ext_resource type="Texture2D" uid="uid://belv3upg6rjqf" path="res://Assets/Animations/hp_0.png" id="1_0bj2k"]
+[ext_resource type="Script" uid="uid://b8qsof24cvk0b" path="res://Assets/Scenes/HealthPip.cs" id="1_qwlf6"]
+[ext_resource type="Texture2D" uid="uid://txvttcx26no8" path="res://Assets/Animations/hp_1.png" id="2_qwlf6"]
+
+[node name="HealthPip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qwlf6")
+pip_on_path = NodePath("HealthOn")
+pip_off_path = NodePath("HealthOff")
+
+[node name="HealthOn" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0bj2k")
+
+[node name="HealthOff" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_qwlf6")

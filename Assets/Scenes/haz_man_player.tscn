@@ -384,7 +384,16 @@ position = Vector2(0, 3)
 col_x = 8.0
 col_y = 8.0
 
+[node name="StallTimer" type="Timer" parent="."]
+wait_time = 0.284
+
+[node name="InvTimer" type="Timer" parent="."]
+wait_time = 0.8
+
+[connection signal="InvTimerTimeup" from="." to="HurtBox2d" method="_on_haz_man_player_inv_timer_timeup"]
 [connection signal="HitRecieved" from="HurtBox2d" to="." method="_on_hurt_box_2d_hit_recieved"]
+[connection signal="timeout" from="StallTimer" to="." method="_on_stall_timer_timeout"]
+[connection signal="timeout" from="InvTimer" to="." method="OnInvTimerTimeout"]
 
 [editable path="Fist"]
 [editable path="HurtBox2d"]

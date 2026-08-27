@@ -9,6 +9,8 @@ enum haz_state
 	CHARGING,
 	PUNCHING,
 	MOBILE,
+	TRAPPED,
+	STALL,
 	DEAD
 }
 public partial class HazManPlayer : CharacterBody2D
@@ -34,7 +36,9 @@ public partial class HazManPlayer : CharacterBody2D
 	NodePath punch_path = null;
 	[Export]
 	NodePath timer_path = null;
-	
+
+	[Signal]
+	public delegate void InvTimerTimeupEventHandler();
 
 	private RayCast2D up = null;
 	private RayCast2D down = null;
@@ -127,33 +131,70 @@ public partial class HazManPlayer : CharacterBody2D
 				}
 			}
 		}
+		// ======================================================================================== //
+		// THIS IS TO STOP CLIPPING BETWEEN SCENE TRANSITIONS	// FIEND FEEL FREE TO EDIT THIS PART
+		else if (state == haz_state.STALL) {
+			Timer timer = (Timer)FindChild("StallTimer");
+            if (Input.IsActionJustPressed("up") && !up.IsColliding())
+            {
+				EndTimerEarly(timer);
+                state = haz_state.MOBILE;
+                dir = new Vector2(0, -1);
+            }
+            if (Input.IsActionJustPressed("down") && !down.IsColliding())
+            {
+                EndTimerEarly(timer);
+                state = haz_state.MOBILE;
+                dir = new Vector2(0, 1);
+            }
+            if (Input.IsActionJustPressed("left") && !left.IsColliding())
+            {
+                EndTimerEarly(timer);
+                state = haz_state.MOBILE;
+                dir = new Vector2(-1, 0);
+            }
+            if (Input.IsActionJustPressed("right") && !right.IsColliding())
+            {
+                EndTimerEarly(timer);
+                state = haz_state.MOBILE;
+                dir = new Vector2(1, 0);
+            }
+        }
 
-		// state machine and processing
-		//GD.Print(state);
-		switch (state)
-		{
-			case haz_state.IDLE:
+			// state machine and processing
+			//GD.Print(state);
+			switch (state)
+			{
+				case haz_state.IDLE:
 
-				break;
-			case haz_state.TALKING:
+					break;
+				case haz_state.TALKING:
 
-				break;
-			case haz_state.PUNCHING:
-				if (!punched)
-					_punch(dir);
-				punched = true;
-				break;
-			case haz_state.MOBILE:
-				_move(dir);
-				break;
-			case haz_state.DEAD:
-				//lol you are dead
+					break;
+				case haz_state.PUNCHING:
+					if (!punched)
+						_punch(dir);
+					punched = true;
+					break;
+				case haz_state.MOBILE:
+					_move(dir);
+					break;
+				case haz_state.DEAD:
+					//lol you are dead
 
-				break;
-			default:
+					break;
+				case haz_state.STALL: 
+						// you are stalled until timer ends
 
-				break;
-		}
+					break;
+				case haz_state.TRAPPED:
+					// get trapped mron no moving
+
+					break; 
+				default:
+
+					break;
+			}
 
 	}
 
@@ -201,12 +242,29 @@ public partial class HazManPlayer : CharacterBody2D
 
 	private void _on_hurt_box_2d_hit_recieved(DamageBox damage)
 	{
-		//GD.Print("INJURY");
+        //GD.Print("INJURY");
 
-		// calculate damage
+        // calculate damage
 
+        Timer timer = (Timer)FindChild("InvTimer");
+		timer.Start();
 
-		GD.Print("Current Health: " + HP);
+        GD.Print("Current Health: " + HP);
+	}
+
+    private void _on_stall_timer_timeout()
+	{
+		state = haz_state.IDLE;
+	}
+
+	private void EndTimerEarly(Timer timer)
+	{
+		timer.Stop();
+	}
+
+    private void OnInvTimerTimeout()
+	{
+        EmitSignalInvTimerTimeup();
 	}
 
 }
