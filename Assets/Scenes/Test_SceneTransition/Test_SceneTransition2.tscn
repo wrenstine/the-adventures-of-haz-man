@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=4 uid="uid://b6mag72t0rg74"]
+
+[ext_resource type="TileSet" uid="uid://dss5omyx22d5g" path="res://Assets/Tilesets/Haz-TileSet1.tres" id="1_210b0"]
+[ext_resource type="Script" uid="uid://dkbbbv8cnl5ch" path="res://Assets/Scripts/PlayerSpawnPoint.cs" id="2_7imky"]
+[ext_resource type="Script" uid="uid://dq2d2ugg2dbvg" path="res://Assets/Scripts/SceneTransition.cs" id="3_ifron"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adnkv"]
+size = Vector2(16, 16)
+
+[node name="TestSceneTransition2" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAIAAQAAAAEAAAAEAAEAAQAAAAEAAAAEAAAAAQAAAAEAAAAEAP//AQAAAAEAAAAEAP7/AQAAAAEAAAAEAP3/AQAAAAEAAAAEAPz/AQAAAAAAAAADAPz/AQAAAAAAAAACAPz/AQAAAAAAAAD+//z/AQAAAAAAAAD8//z/AQAAAAAAAAD9//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAD8//3/AQAAAAEAAAD8//7/AQAAAAEAAAD8////AQAAAAEAAAD8/wAAAQAAAAEAAAD8/wEAAQAAAAEAAAD8/wIAAQAAAAEAAAAAAAMAAAACAAAAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAAAAAIAAAABAAAAAAACAAAAAAABAAAAAAACAP//AAABAAAAAAACAP7/AAABAAAAAAABAP7/AAABAAAAAAAAAP7/AAABAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAD/////AAABAAAAAAD+////AAABAAAAAAD+//7/AAABAAAAAAD+/wAAAAABAAAAAAD///7/AAABAAAAAAADAP3/AAAAAAIAAAD9/wIAAAACAAIAAAD9//3/AAADAAIAAAADAAIAAAABAAIAAAADAAEAAAAAAAEAAAADAAAAAAAAAAEAAAADAP//AAAAAAEAAAADAP7/AAAAAAEAAAD9/wEAAAABAAEAAAD9/wAAAAABAAEAAAD9////AAABAAEAAAD9//7/AAABAAEAAAABAAIAAAACAAEAAAACAAIAAAACAAEAAAD//wIAAAACAAEAAAD+/wIAAAACAAEAAAD+//3/AAADAAEAAAD///3/AAADAAEAAAAAAP3/AAADAAEAAAABAP3/AAADAAEAAAACAP3/AAADAAEAAAA=")
+tile_set = ExtResource("1_210b0")
+
+[node name="PlayerSpawnPoint_Door1" type="Node2D" parent="."]
+position = Vector2(8, 56)
+script = ExtResource("2_7imky")
+key = "TestDoor1"
+metadata/_custom_type_script = "uid://dkbbbv8cnl5ch"
+
+[node name="SceneTransition" type="Area2D" parent="."]
+script = ExtResource("3_ifron")
+scene_path = "uid://c4i4c5s2e4oos"
+key = "TestDoor1"
+metadata/_custom_type_script = "uid://dq2d2ugg2dbvg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransition"]
+position = Vector2(8, 56)
+shape = SubResource("RectangleShape2D_adnkv")

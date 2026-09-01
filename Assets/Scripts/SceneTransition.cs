@@ -11,7 +11,7 @@ public partial class SceneTransition : Area2D
 	/// <summary>
 	/// String key matches this scene transition with a spawn point in another scene
 	/// </summary>
-	[Export(PropertyHint.TypeString)]
+	[Export]
 	private string key;
 
 	// (fiend) make the scene transition not active for the first bit to prevent players spawning into it from transitioning (:flushed:)
@@ -23,15 +23,21 @@ public partial class SceneTransition : Area2D
 
 
 	// Called when the node enters the scene tree for the first time.
-	public async override void _Ready()
+	public override async void _Ready()
 	{
-		await ToSignal(player, "ready");
 		BodyEntered += OnBodyEntered;
 		BodyExited += OnBodyExited;
+		// Only wait for the player if they don't already exist
+		await GetManager().WaitForPlayerReady();
 
 		if (!OverlapsBody(player))
 		{
-			active = true;
+			GD.Print("Not Overlapping");
+			//active = true;
+		}
+		else
+		{
+			GD.Print("Overlapping");
 		}
 
 		// If the player's spawn point is inside this box, make sure not to activate.
@@ -68,7 +74,7 @@ public partial class SceneTransition : Area2D
 	/// <param name="body"></param>
 	private void OnBodyEntered(Node2D body)
 	{
-		
+		GD.Print("OnBodyEntered");
 		if (active && /*!player_inside && */ body.GetType() == typeof(HazManPlayer) )
 		{
 			player_inside = true;
@@ -82,6 +88,7 @@ public partial class SceneTransition : Area2D
 	/// <param name="body"></param>
 	private void OnBodyExited(Node2D body)
 	{
+		GD.Print("OnBodyExited");
 		if (!active && body.GetType() == typeof(HazManPlayer))
 		{
 			active = true;
